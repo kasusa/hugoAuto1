@@ -71,7 +71,7 @@ namespace hugoAuto1
             string outpath = textBox2.Text;
             string rawpath = textBox1.Text;
             string mycmd =
-              $@"hugo -d {outpath}-s {rawpath}";
+              $@"hugo -d {outpath} -s {rawpath}";
             runincmd(mycmd);
             toolStripStatusLabel1.Text = $"hugo编译输出完毕";
 
