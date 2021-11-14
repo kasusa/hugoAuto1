@@ -11,7 +11,7 @@
 
 新建文章 - typora写文章 - 起动server查看效果 - 编译成静态页面 - 通过github上传到自己的github.io博客之类的。我用这个软件一次把流程打通，再也不需要痛苦的记命令了。
 
-![image-20211114205423433](C:\Users\kasusa\AppData\Roaming\Typora\typora-user-images\image-20211114205423433.png)
+![image-20211114205423433](https://tvax3.sinaimg.cn/large/006rgJELly1gwez3p67lbj30bo089mzm.jpg)
 
 ---
 
