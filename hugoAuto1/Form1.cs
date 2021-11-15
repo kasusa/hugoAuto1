@@ -119,11 +119,12 @@ namespace hugoAuto1
               .GetFiles(filePath, "*.md");
             //提取路径地址+/为了在后面把完整路径剔除
             string pathstr = filePath + "\\";
+            string pathstr2 = ".md";
             int count = 0;
             foreach (var file in files)
             {
                 //逐个把文件名放在combox中
-                comboBox1.Items.Add(file.ToString().Replace(pathstr, ""));
+                comboBox1.Items.Add(file.ToString().Replace(pathstr, "").Replace(pathstr2, ""));
                 count++;
             }
             toolStripStatusLabel1.Text = $"读取到了【{count}】个md文件。";
