@@ -1,7 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="hugoAuto1.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="source" Type="System.String" Scope="User">
+      <Value Profile="(Default)">hugo源文件的根目录(包含主题等）</Value>
+    </Setting>
+    <Setting Name="output" Type="System.String" Scope="User">
+      <Value Profile="(Default)">要hugo编译输出到的目录位置</Value>
+    </Setting>
+    <Setting Name="articles" Type="System.String" Scope="User">
+      <Value Profile="(Default)">文章目录文件夹，根据主题不同有所区别，一般在hugo源文件夹的posts文件目录</Value>
+    </Setting>
+    <Setting Name="username" Type="System.String" Scope="User">
+      <Value Profile="(Default)">设置win用户名来正常访问默认程序安装路径</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

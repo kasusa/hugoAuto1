@@ -9,21 +9,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using hugoAuto1.Properties;
+
 
 
 namespace hugoAuto1
 {
     public partial class Form1 : Form
     {
+        string str_source = "";
+        string str_output = "";
+        string str_articles = "";
+        string win_username = "";
 
         public Form1()
         {
             InitializeComponent();
-            textBox1.Text = @"C:\Users\kasusa\Documents\Gitee\kasusaBlog-bootstraptheme";
-            textBox2.Text = @"C:\Users\kasusa\Documents\Gitee\kasusa.github.io\hugo";
-            textBox3.Text = @"C:\Users\kasusa\Documents\Gitee\kasusaBlog-bootstraptheme\content\zh-cn\posts";
-            toolStripStatusLabel1.Text = $"已自动填充地址，需要在SourceCode中修改";
+            getsettings();
+            textBox1.Text = Settings.Default.source;
+            textBox2.Text = Settings.Default.output;
+            textBox3.Text = Settings.Default.articles;
+            textBox4.Text = Settings.Default.username;
+        }
 
+        private void getsettings()
+        {
+            str_source = Settings.Default.source;
+            str_output = Settings.Default.output;
+            str_articles = Settings.Default.articles;
+            win_username = Settings.Default.username;
+        }
+
+        //保存设置
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Settings.Default.source = textBox1.Text;
+            Settings.Default.output = textBox2.Text;
+            Settings.Default.articles = textBox3.Text;
+            Settings.Default.username = textBox4.Text;
+            Settings.Default.Save();
+            toolStripStatusLabel1.Text = "设置已保存";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -36,7 +61,7 @@ namespace hugoAuto1
             catch
             {
                 MessageBox.Show("需要设置目录");
-                textBox1.Text = textBox2.Text = textBox3.Text = "";
+                //textBox1.Text = textBox2.Text = textBox3.Text = "";
             }
         }
 
@@ -50,7 +75,7 @@ namespace hugoAuto1
         {
             string strCmdText;
             strCmdText = $"{link}";
-            Process process = Process.Start(@"C:\Users\kasusa\AppData\Local\Google\Chrome\Application\Chrome.exe", strCmdText);
+            Process process = Process.Start($@"C:\Users\{win_username}\AppData\Local\Google\Chrome\Application\Chrome.exe", strCmdText);
         }
 
 
@@ -87,7 +112,7 @@ namespace hugoAuto1
         //开启github
         private void button7_Click(object sender, EventArgs e)
         {
-            Process process = Process.Start(@"C:\Users\kasusa\AppData\Local\GitHubDesktop\GitHubDesktop.exe", "");
+            Process process = Process.Start($@"C:\Users\{win_username}\AppData\Local\GitHubDesktop\GitHubDesktop.exe", "");
             toolStripStatusLabel1.Text = $"已经命令Github启动";
         }
         //新建文章
@@ -114,6 +139,14 @@ namespace hugoAuto1
             string filePath = $@"{rawpath}\content\zh-cn\posts\{filename}.md";
             Process.Start(@"C:\Program Files\Typora\Typora.exe", filePath);
             toolStripStatusLabel1.Text = $"已经命令typora打开【{filename}.md】";
+        }
+        //打开obsidian
+        private void button12_Click(object sender, EventArgs e)
+        {
+            string mycmd =
+                 $@"C:\Users\{win_username}\AppData\Local\Obsidian\Obsidian.exe";
+            runincmd(mycmd);
+            toolStripStatusLabel1.Text = $"已经命令打开Obsidian";
         }
         //刷新combobox
         private void button4_Click(object sender, EventArgs e)
@@ -161,5 +194,9 @@ namespace hugoAuto1
         {
 
         }
+
+
+
+
     }
 }
