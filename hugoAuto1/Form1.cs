@@ -28,8 +28,16 @@ namespace hugoAuto1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //刷新combox
-            button4.PerformClick();
+            try
+            {
+                //刷新combox
+                button4.PerformClick();
+            }
+            catch
+            {
+                MessageBox.Show("需要设置目录");
+                textBox1.Text = textBox2.Text = textBox3.Text = "";
+            }
         }
 
         private void runincmd(string yourcommand)
