@@ -48,6 +48,7 @@ namespace hugoAuto1
             Settings.Default.articles = textBox3.Text;
             Settings.Default.username = textBox4.Text;
             Settings.Default.Save();
+            win_username = Settings.Default.username;
             toolStripStatusLabel1.Text = "设置已保存";
         }
 
