@@ -70,5 +70,17 @@ namespace hugoAuto1.Properties {
                 this["username"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\Google\\Chrome\\Application\\Chrome.exe")]
+        public string chromeCommand {
+            get {
+                return ((string)(this["chromeCommand"]));
+            }
+            set {
+                this["chromeCommand"] = value;
+            }
+        }
     }
 }

@@ -74,9 +74,21 @@ namespace hugoAuto1
         }
         private void openinbrowser(string link)
         {
-            string strCmdText;
-            strCmdText = $"{link}";
-            Process process = Process.Start($@"C:\Users\{win_username}\AppData\Local\Google\Chrome\Application\Chrome.exe", strCmdText);
+
+            try
+            {
+                string strCmdText;
+                strCmdText = $"{link}";
+                Process process = Process.Start(Settings.Default.chromeCommand, strCmdText);
+                //Process process = Process.Start($@"C:\Program Files\Google\Chrome\Application\chrome.exe", strCmdText);
+            }
+            catch (Exception)
+            {
+                toolStripStatusLabel1.Text = "chrome 路径错误，请自行设置：";
+                Form a = new Form2();
+                a.ShowDialog();
+            }
+
         }
 
 

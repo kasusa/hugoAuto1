@@ -14,5 +14,8 @@
     <Setting Name="username" Type="System.String" Scope="User">
       <Value Profile="(Default)">设置win用户名来正常访问默认程序安装路径</Value>
     </Setting>
+    <Setting Name="chromeCommand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files\Google\Chrome\Application\Chrome.exe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
