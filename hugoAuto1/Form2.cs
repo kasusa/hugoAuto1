@@ -30,7 +30,7 @@ namespace hugoAuto1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Settings.Default.chromeCommand = button1.Text;
+            Settings.Default.chromeCommand = textBox1.Text;
             Settings.Default.Save();
             this.Close();
         }
