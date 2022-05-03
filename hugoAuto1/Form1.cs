@@ -20,7 +20,7 @@ namespace hugoAuto1
         string str_source = "";
         string str_output = "";
         string str_articles = "";
-        string win_username = "";
+
 
         public Form1()
         {
@@ -29,7 +29,6 @@ namespace hugoAuto1
             textBox1.Text = Settings.Default.source;
             textBox2.Text = Settings.Default.output;
             textBox3.Text = Settings.Default.articles;
-            textBox4.Text = Settings.Default.username;
         }
 
         private void getsettings()
@@ -37,7 +36,6 @@ namespace hugoAuto1
             str_source = Settings.Default.source;
             str_output = Settings.Default.output;
             str_articles = Settings.Default.articles;
-            win_username = Settings.Default.username;
         }
 
         //保存设置
@@ -46,9 +44,7 @@ namespace hugoAuto1
             Settings.Default.source = textBox1.Text;
             Settings.Default.output = textBox2.Text;
             Settings.Default.articles = textBox3.Text;
-            Settings.Default.username = textBox4.Text;
             Settings.Default.Save();
-            win_username = Settings.Default.username;
             toolStripStatusLabel1.Text = "设置已保存";
         }
 
@@ -125,7 +121,7 @@ namespace hugoAuto1
         //开启github
         private void button7_Click(object sender, EventArgs e)
         {
-            Process process = Process.Start($@"C:\Users\{win_username}\AppData\Local\GitHubDesktop\GitHubDesktop.exe", "");
+            Process process = Process.Start(Settings.Default.githubCommand, "");
             toolStripStatusLabel1.Text = $"已经命令Github启动";
         }
         //新建文章
@@ -150,24 +146,44 @@ namespace hugoAuto1
             string filename = comboBox1.Text;
             string rawpath = textBox1.Text;
             string filePath = $@"{rawpath}\content\zh-cn\posts\{filename}.md";
-            Process.Start(@"C:\Program Files\Typora\Typora.exe", filePath);
-            toolStripStatusLabel1.Text = $"已经命令typora打开【{filename}.md】";
+            try
+            {
+                Process.Start(Settings.Default.typoraCommand.ToString(), filePath);
+                toolStripStatusLabel1.Text = $"已经命令typora打开【{filename}.md】";
+            }
+            catch (Exception)
+            {
+                toolStripStatusLabel1.Text = "Typora 路径错误，请自行设置：";
+                Form a = new Form2();
+                a.ShowDialog();
+            }
         }
         //打开obsidian
         private void button12_Click(object sender, EventArgs e)
         {
-            string mycmd =
-                 $@"C:\Users\{win_username}\AppData\Local\Obsidian\Obsidian.exe";
-            runincmd(mycmd);
-            toolStripStatusLabel1.Text = $"已经命令打开Obsidian";
+            string filename = comboBox1.Text;
+            string rawpath = textBox1.Text;
+            string filePath = $@"{rawpath}\content\zh-cn\posts\{filename}.md";
+            try
+            {
+                Process.Start(Settings.Default.vscCommand.ToString(), filePath);
+                toolStripStatusLabel1.Text = $"已经命令vsc打开【{filename}.md】";
+            }
+            catch (Exception)
+            {
+                toolStripStatusLabel1.Text = "vsc 路径错误，请自行设置：";
+                Form a = new Form2();
+                a.ShowDialog();
+            }
         }
         //刷新combobox
         private void button4_Click(object sender, EventArgs e)
         {
-            comboBox1.BackColor = Color.White;
-            string rawpath = textBox1.Text;
-            string filePath = $@"{rawpath}\content\zh-cn\posts";
 
+            comboBox1.BackColor = Color.White;
+            //string rawpath = textBox1.Text;
+            //string filePath = $@"{rawpath}\content\zh-cn\posts";
+            string filePath = $@"{textBox3.Text}";
             comboBox1.Items.Clear();
             var files = Directory
               .GetFiles(filePath, "*.md");
@@ -187,15 +203,19 @@ namespace hugoAuto1
         private void button5_Click(object sender, EventArgs e)
         {
             string rawpath = textBox1.Text;
+            //string mycmd =
+            //   $@"hugo server -t {Settings.Default.hugotheme} -p 51000 -s {rawpath}";
             string mycmd =
-               $@"hugo server -t hugo-theme-bootstrap -p 51000 -s {rawpath}";
+               $@"hugo server -t {Settings.Default.hugotheme} -p 51000 -s {rawpath}";
             runincmd(mycmd);
+            Clipboard.SetText(mycmd);
+            toolStripStatusLabel1.Text = "命令已经复制到剪切板，如果有问题就用手工方式打开吧！";
         }
         //本地浏览器打开博客
         private void button10_Click(object sender, EventArgs e)
         {
             openinbrowser("http://localhost:51000/hugo/");
-            toolStripStatusLabel1.Text = $"Chrome已启动";
+            toolStripStatusLabel1.Text = $"浏览器已启动";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -208,8 +228,21 @@ namespace hugoAuto1
 
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openinbrowser("https://github.com/gohugoio/hugo/releases");
+        }
 
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form a = new Form_commands();
+            a.ShowDialog();
+        }
 
-
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form a = new Form2();
+            a.ShowDialog();
+        }
     }
 }

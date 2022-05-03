@@ -17,5 +17,17 @@
     <Setting Name="chromeCommand" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Program Files\Google\Chrome\Application\Chrome.exe</Value>
     </Setting>
+    <Setting Name="typoraCommand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\kasusa\AppData\Local\Programs\Typora\Typora.exe</Value>
+    </Setting>
+    <Setting Name="vscCommand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\kasusa\AppData\Local\Programs\Microsoft VS Code\Code.exe</Value>
+    </Setting>
+    <Setting Name="githubCommand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\kasusa\AppData\Local\GitHubDesktop\GitHubDesktop.exe</Value>
+    </Setting>
+    <Setting Name="hugotheme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">hugo-theme-bootstrap</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

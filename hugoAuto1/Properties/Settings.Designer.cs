@@ -12,7 +12,7 @@ namespace hugoAuto1.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -80,6 +80,54 @@ namespace hugoAuto1.Properties {
             }
             set {
                 this["chromeCommand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\kasusa\\AppData\\Local\\Programs\\Typora\\Typora.exe")]
+        public string typoraCommand {
+            get {
+                return ((string)(this["typoraCommand"]));
+            }
+            set {
+                this["typoraCommand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\kasusa\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe")]
+        public string vscCommand {
+            get {
+                return ((string)(this["vscCommand"]));
+            }
+            set {
+                this["vscCommand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\kasusa\\AppData\\Local\\GitHubDesktop\\GitHubDesktop.exe")]
+        public string githubCommand {
+            get {
+                return ((string)(this["githubCommand"]));
+            }
+            set {
+                this["githubCommand"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("hugo-theme-bootstrap")]
+        public string hugotheme {
+            get {
+                return ((string)(this["hugotheme"]));
+            }
+            set {
+                this["hugotheme"] = value;
             }
         }
     }
